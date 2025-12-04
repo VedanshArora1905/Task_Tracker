@@ -7,6 +7,8 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
+const authRoutes = require('./routes/auth');
+const taskRoutes = require('./routes/task');
 require('dotenv').config();
 
 const app = express();
@@ -19,6 +21,9 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes);
 // Simple test route
 app.get('/', (req, res) => {
   res.json({ message: 'Task Tracker API is running' });
