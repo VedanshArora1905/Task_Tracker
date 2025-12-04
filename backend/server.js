@@ -1,6 +1,12 @@
+//Create basic Express server file
+//backend/server.js
+
+//This is a test API for a task tracker application
+
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const connectDB = require('./config/db');
 require('dotenv').config();
 
 const app = express();
@@ -20,6 +26,11 @@ app.get('/', (req, res) => {
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+}).catch((err) => {
+  console.error('MongoDB connection error:', err.message);
+  process.exit(1);
 });
