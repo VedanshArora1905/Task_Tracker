@@ -48,11 +48,19 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
-        <h1 className="text-2xl font-semibold mb-6 text-center">Create an account</h1>
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-md rounded-3xl border border-slate-800/70 bg-slate-900/80 p-8 shadow-[0_0_35px_rgba(168,85,247,0.35)] backdrop-blur-xl">
+        <h1 className="text-2xl font-semibold mb-2 text-center">
+          Create your{" "}
+          <span className="bg-gradient-to-r from-cyan-400 via-fuchsia-400 to-orange-300 bg-clip-text text-transparent">
+            workspace
+          </span>
+        </h1>
+        <p className="text-xs text-center text-slate-300 mb-6">
+          Sign up to start organising tasks with priorities, statuses, and a little bit of neon.
+        </p>
         {error && (
-          <p className="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2">
+          <p className="mb-4 text-xs text-red-300 bg-red-900/40 border border-red-500/60 rounded px-3 py-2">
             {error}
           </p>
         )}
@@ -66,7 +74,7 @@ export default function SignupPage() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
+              className="w-full rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/80 focus:border-fuchsia-400/80"
               placeholder="Your name"
             />
           </div>
@@ -79,7 +87,7 @@ export default function SignupPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
+              className="w-full rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/80 focus:border-cyan-400/80"
               placeholder="you@example.com"
               required
             />
@@ -93,7 +101,7 @@ export default function SignupPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
+              className="w-full rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:border-orange-400/80"
               placeholder="••••••••"
               required
             />
@@ -101,14 +109,14 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-md bg-slate-900 text-white py-2.5 text-sm font-medium hover:bg-slate-800 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full rounded-full bg-gradient-to-r from-fuchsia-500 via-cyan-400 to-emerald-400 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-fuchsia-500/30 transition hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Signing up...' : 'Sign up'}
           </button>
         </form>
-        <p className="mt-4 text-sm text-center text-gray-600">
+        <p className="mt-4 text-xs text-center text-slate-300">
           Already have an account?{' '}
-          <Link href="/login" className="text-slate-900 font-medium hover:underline">
+          <Link href="/login" className="text-cyan-300 font-medium hover:underline">
             Log in
           </Link>
         </p>
