@@ -47,25 +47,22 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-3xl border border-slate-800/70 bg-slate-900/80 p-8 shadow-[0_0_35px_rgba(56,189,248,0.35)] backdrop-blur-xl">
-        <h1 className="text-2xl font-semibold mb-2 text-center">
-          Welcome{" "}
-          <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-300 bg-clip-text text-transparent">
-            back
-          </span>
+    <div className="min-h-screen flex items-center justify-center px-4 bg-[#f5f5f7]">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+        <h1 className="text-2xl font-semibold mb-2 text-center text-[#1d1d1f]">
+          Welcome back
         </h1>
-        <p className="text-xs text-center text-slate-300 mb-6">
-          Log in to see your neon‑coded tasks and pick up where you left off.
+        <p className="text-sm text-center text-gray-600 mb-6">
+          Log in to continue managing your tasks.
         </p>
         {error && (
-          <p className="mb-4 text-xs text-red-300 bg-red-900/40 border border-red-500/60 rounded px-3 py-2">
+          <p className="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
             {error}
           </p>
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="email">
+            <label className="block text-sm font-medium mb-1.5 text-gray-700" htmlFor="email">
               Email
             </label>
             <input
@@ -73,13 +70,13 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/80 focus:border-cyan-400/80"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
               placeholder="you@example.com"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="password">
+            <label className="block text-sm font-medium mb-1.5 text-gray-700" htmlFor="password">
               Password
             </label>
             <input
@@ -87,7 +84,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/80 focus:border-fuchsia-400/80"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
               placeholder="••••••••"
               required
             />
@@ -95,14 +92,14 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-emerald-400 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 transition hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full rounded-lg bg-[#007aff] py-2.5 text-sm font-medium text-white hover:bg-[#0051d5] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Logging in...' : 'Log in'}
           </button>
         </form>
-        <p className="mt-4 text-xs text-center text-slate-300">
+        <p className="mt-4 text-sm text-center text-gray-600">
           Don&apos;t have an account?{' '}
-          <Link href="/signup" className="text-cyan-300 font-medium hover:underline">
+          <Link href="/signup" className="text-[#007aff] font-medium hover:underline">
             Sign up
           </Link>
         </p>

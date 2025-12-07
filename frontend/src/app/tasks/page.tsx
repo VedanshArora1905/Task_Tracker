@@ -150,18 +150,15 @@ export default function TasksPage() {
   }
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-slate-800/80 bg-slate-950/70 backdrop-blur">
+    <div className="min-h-screen bg-[#f5f5f7]">
+      <header className="border-b border-gray-200 bg-white">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-lg font-semibold">
-            Task{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-fuchsia-400 to-orange-300 bg-clip-text text-transparent">
-              Tracker
-            </span>
+          <h1 className="text-lg font-semibold text-[#1d1d1f]">
+            Task Tracker
           </h1>
           <button
             onClick={handleLogout}
-            className="text-xs px-3 py-1.5 rounded-full border border-slate-600 bg-slate-900/60 text-slate-200 hover:border-cyan-400 hover:bg-slate-900"
+            className="text-sm px-3 py-1.5 rounded-lg border border-gray-300 bg-white text-[#1d1d1f] hover:bg-gray-50 transition-colors"
           >
             Logout
           </button>
@@ -170,23 +167,20 @@ export default function TasksPage() {
 
       <main className="max-w-5xl mx-auto px-4 py-6 space-y-6">
         {error && (
-          <p className="text-xs text-red-300 bg-red-900/40 border border-red-500/60 rounded px-3 py-2">
+          <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
             {error}
           </p>
         )}
 
-        <section className="rounded-3xl border border-slate-800/80 bg-slate-900/80 p-4 md:p-6 shadow-[0_0_35px_rgba(56,189,248,0.25)] space-y-4 backdrop-blur">
-          <h2 className="text-base font-semibold flex items-center gap-2">
+        <section className="bg-white rounded-xl border border-gray-200 p-4 md:p-6 space-y-4 shadow-sm">
+          <h2 className="text-base font-semibold text-[#1d1d1f]">
             Filters
-            <span className="text-[10px] rounded-full border border-slate-700 px-2 py-0.5 uppercase tracking-wide text-slate-400">
-              focus mode
-            </span>
           </h2>
           <div className="flex flex-col md:flex-row gap-3 md:items-center">
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full md:w-48 rounded-xl border border-slate-700 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-400/80 focus:border-cyan-400/80"
+              className="w-full md:w-48 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
             >
               <option value="">All statuses</option>
               <option value="todo">To Do</option>
@@ -199,12 +193,12 @@ export default function TasksPage() {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 placeholder="Search by title or description"
-                className="flex-1 rounded-xl border border-slate-700 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/80 focus:border-fuchsia-400/80"
+                className="flex-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
               />
               <button
                 type="button"
                 onClick={() => setSearch(searchInput)}
-                className="px-3 py-2 text-xs rounded-full bg-gradient-to-r from-fuchsia-500 via-cyan-400 to-emerald-400 text-slate-950 font-semibold shadow-md shadow-fuchsia-500/30 hover:brightness-110"
+                className="px-4 py-2 text-sm rounded-lg bg-[#007aff] text-white font-medium hover:bg-[#0051d5] transition-colors"
               >
                 Search
               </button>
@@ -212,13 +206,13 @@ export default function TasksPage() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-slate-800/80 bg-slate-900/80 p-4 md:p-6 space-y-4 backdrop-blur">
-          <h2 className="text-base font-semibold">
+        <section className="bg-white rounded-xl border border-gray-200 p-4 md:p-6 space-y-4 shadow-sm">
+          <h2 className="text-base font-semibold text-[#1d1d1f]">
             {editingId ? 'Edit Task' : 'Create Task'}
           </h2>
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium mb-1" htmlFor="title">
+              <label className="block text-sm font-medium mb-1.5 text-gray-700" htmlFor="title">
                 Title
               </label>
               <input
@@ -226,24 +220,24 @@ export default function TasksPage() {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/80 focus:border-cyan-400/80"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
                 required
               />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium mb-1" htmlFor="description">
+              <label className="block text-sm font-medium mb-1.5 text-gray-700" htmlFor="description">
                 Description
               </label>
               <textarea
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/80 focus:border-fuchsia-400/80"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
                 rows={2}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1" htmlFor="dueDate">
+              <label className="block text-sm font-medium mb-1.5 text-gray-700" htmlFor="dueDate">
                 Due Date
               </label>
               <input
@@ -251,18 +245,18 @@ export default function TasksPage() {
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-emerald-400/80"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1" htmlFor="priority">
+              <label className="block text-sm font-medium mb-1.5 text-gray-700" htmlFor="priority">
                 Priority
               </label>
               <select
                 id="priority"
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as Priority)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:border-orange-400/80"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -270,14 +264,14 @@ export default function TasksPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1" htmlFor="status">
+              <label className="block text-sm font-medium mb-1.5 text-gray-700" htmlFor="status">
                 Status
               </label>
               <select
                 id="status"
                 value={status}
                 onChange={(e) => setStatus(e.target.value as Status)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-950/60 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-400/80 focus:border-sky-400/80"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-[#1d1d1f] focus:outline-none focus:ring-2 focus:ring-[#007aff]/20 focus:border-[#007aff]"
               >
                 <option value="todo">To Do</option>
                 <option value="in_progress">In Progress</option>
@@ -287,7 +281,7 @@ export default function TasksPage() {
             <div className="flex items-center gap-2 md:col-span-2">
               <button
                 type="submit"
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-emerald-400 text-xs font-semibold text-slate-950 shadow-md shadow-cyan-500/30 hover:brightness-110"
+                className="px-4 py-2 rounded-lg bg-[#007aff] text-sm font-medium text-white hover:bg-[#0051d5] transition-colors"
               >
                 {editingId ? 'Update Task' : 'Create Task'}
               </button>
@@ -295,49 +289,49 @@ export default function TasksPage() {
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="px-3 py-2 rounded-full border border-slate-600 text-xs text-slate-200 hover:bg-slate-900"
+                  className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm text-[#1d1d1f] hover:bg-gray-50 transition-colors"
                 >
-                  Cancel edit
+                  Cancel
                 </button>
               )}
             </div>
           </form>
         </section>
 
-        <section className="rounded-3xl border border-slate-800/80 bg-slate-900/80 p-4 md:p-6 space-y-4 backdrop-blur">
+        <section className="bg-white rounded-xl border border-gray-200 p-4 md:p-6 space-y-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-semibold">Your Tasks</h2>
-            {loading && <span className="text-xs text-gray-500">Loading...</span>}
+            <h2 className="text-base font-semibold text-[#1d1d1f]">Your Tasks</h2>
+            {loading && <span className="text-sm text-gray-500">Loading...</span>}
           </div>
           {tasks.length === 0 && !loading ? (
-            <p className="text-xs text-slate-300">
-              No tasks yet. Create your first colourful card above.
+            <p className="text-sm text-gray-500">
+              No tasks yet. Create your first task above.
             </p>
           ) : (
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {tasks.map((task) => (
                 <li
                   key={task._id}
-                  className="border border-slate-700 rounded-2xl px-3 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2 bg-slate-950/60"
+                  className="border-b border-gray-100 last:border-b-0 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2"
                 >
-                  <div>
-                    <h3 className="font-medium text-sm">{task.title}</h3>
+                  <div className="flex-1">
+                    <h3 className="font-medium text-sm text-[#1d1d1f]">{task.title}</h3>
                     {task.description && (
-                      <p className="text-xs text-slate-300 mt-0.5">{task.description}</p>
+                      <p className="text-sm text-gray-600 mt-1">{task.description}</p>
                     )}
-                    <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
+                    <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-gray-500">
                       <span
-                        className={`px-2 py-0.5 rounded-full border ${
+                        className={`px-2 py-0.5 rounded ${
                           task.priority === 'high'
-                            ? 'border-red-400/70 bg-red-900/40 text-red-300'
+                            ? 'bg-red-50 text-red-700 border border-red-200'
                             : task.priority === 'medium'
-                            ? 'border-amber-400/70 bg-amber-900/40 text-amber-200'
-                            : 'border-emerald-400/70 bg-emerald-900/40 text-emerald-200'
+                            ? 'bg-amber-50 text-amber-700 border border-amber-200'
+                            : 'bg-green-50 text-green-700 border border-green-200'
                         }`}
                       >
                         {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)} priority
                       </span>
-                      <span className="px-2 py-0.5 rounded-full border border-slate-600 bg-slate-900/60">
+                      <span className="px-2 py-0.5 rounded bg-gray-100 text-gray-700 border border-gray-200">
                         {task.status === 'todo'
                           ? 'To Do'
                           : task.status === 'in_progress'
@@ -345,7 +339,7 @@ export default function TasksPage() {
                           : 'Done'}
                       </span>
                       {task.dueDate && (
-                        <span>Due {new Date(task.dueDate).toLocaleDateString()}</span>
+                        <span className="text-gray-600">Due {new Date(task.dueDate).toLocaleDateString()}</span>
                       )}
                     </div>
                   </div>
@@ -353,14 +347,14 @@ export default function TasksPage() {
                     <button
                       type="button"
                       onClick={() => handleEdit(task)}
-                      className="px-3 py-1.5 rounded-full border border-slate-600 text-[11px] text-slate-100 hover:bg-slate-900"
+                      className="px-3 py-1.5 rounded-lg border border-gray-300 bg-white text-xs text-[#1d1d1f] hover:bg-gray-50 transition-colors"
                     >
                       Edit
                     </button>
                     <button
                       type="button"
                       onClick={() => handleDelete(task._id)}
-                      className="px-3 py-1.5 rounded-full border border-red-500/80 text-[11px] text-red-200 hover:bg-red-900/40"
+                      className="px-3 py-1.5 rounded-lg border border-red-300 bg-white text-xs text-red-600 hover:bg-red-50 transition-colors"
                     >
                       Delete
                     </button>
